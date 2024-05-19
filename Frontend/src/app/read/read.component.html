@@ -1,0 +1,32 @@
+<div class="container">
+
+  <div *ngIf="successmsg" class="alert alert-dark alert-dismissible fade show col-lg-4 mt-2" role="alert">
+    <strong>{{successmsg}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+  <table class="table table-striped table-hover mt-5">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">FULL NAME</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">MOBILE</th>
+        <th scope="col">DELETE</th>
+        <th scope="col">CHANGE</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (us of readData;track $index) {
+        <tr>
+          <td>{{us.id}}</td>
+          <td>{{us.fullname}}</td>
+          <td>{{us.email}}</td>
+          <td>{{us.mobile}}</td>
+          <td><button class="btn btn-sm btn-danger" (click)="deleteId(us.id)">Delete</button></td>
+          <td><a [routerLink]="['/create',us.id]" class="btn btn-sm btn-info">Edit</a></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
